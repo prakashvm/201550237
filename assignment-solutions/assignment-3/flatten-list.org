@@ -1,0 +1,50 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 3
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 3.
+
+* Problems
+  Assignment 3 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/more-with-lists/index.html#org9b5ee50
+
+* Solutions
+
+** Problem 2
+*** Question
+    Given a nested list structure, write a function flatten-list which flattens the structure into a single dimensional list. 
+	
+    
+*** Solution
+    
+#+NAME: flatten-list
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (split-list ls a)
+  (define (less b)      (<= b a))
+    (define (greater b) (>  b a))
+      (list (filter less ls)
+            (filter greater ls)))
+
+
+(check-equal? (split-list '() 3) '(() ()) "test 1")
+(check-equal? (split-list '(1 2 3 4) 5) '((1 2 3 4) ()) "test 2")
+(check-equal? (split-list '(3 1 2 6 5 7 5) 5) '((3 1 2 5 5) (6 7)) "test 3")
+(check-equal? (split-list '(3 1 2 6 5 7 5) 0) '(() (3 1 2 6 5 7 5)))
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle flatten-list.rkt :eval no :noweb yes
+<<flatten-list>>
+#+END_SRC

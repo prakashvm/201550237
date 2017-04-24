@@ -1,0 +1,47 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 1
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-06 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution to Assignment 1.
+
+* Problems
+  Assignment 1 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/first-order-functions/index.html#orgf83783f
+
+* Solutions
+
+** Problem 2
+*** Question
+    Write a function called list-length which takes a list and returns the number of elements in it.
+
+*** Solution
+    
+#+NAME: list_length
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (list-length lst)
+  (if (empty? lst)
+      0
+      (+ 1 (list-length (rest lst)))))
+
+(check-equal? (list-length '()) 0 "test 1")
+(check-equal? (list-length '(1 2 a)) 3 "test 2")
+(check-equal? (list-length '(1 2 (1 2 3))) 3 "test 3")
+(check-equal? (list-length '((1 2) (3 4) (5 6))) 3 "test 4")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle list-length.rkt :eval no :noweb yes
+<<list_length>>
+#+END_SRC

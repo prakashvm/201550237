@@ -1,0 +1,48 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 2
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 2.
+
+* Problems
+  Assignment 2 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/higher-order-functions/index.html#org167582b
+
+* Solutions
+
+** Problem 1
+*** Question
+    Reverse a list using reduce defined arlier. 
+	
+    
+*** Solution
+    
+#+NAME: reverse
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (reverse l)
+  (if (null? l)
+      '()
+      (append (reverse (cdr l)) (list (car l)))
+  )
+)
+
+(check-equal? (reverse '(a b c)) '(c b a) "Reverse (a b c)")
+(check-equal? (reverse '(1 2 3 4)) '(4 3 2 1) "Reverse (1 2 3 4)")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle reverse.rkt :eval no :noweb yes
+<<reverse>>
+#+END_SRC

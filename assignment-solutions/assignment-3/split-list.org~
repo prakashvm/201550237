@@ -1,0 +1,56 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 3
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 3.
+
+* Problems
+  Assignment 3 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/more-with-lists/index.html#org1c54cfc
+
+* Solutions
+
+** Problem 1
+*** Question
+    Given a list of numbers and a number, create a function split-list that returns two lists (Lists of lists) such that.
+	
+    1. The first list contains numbers from the original list which are less than or equal to the given number.
+
+    2. The second list contains numbers from the original list which are greater than the given number.
+
+    NOTE: The ordering of the numbers in the resultant lists should not change.
+
+
+*** Solution
+    
+#+NAME: split-list
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (split-list ls a)
+  (define (less b)      (<= b a))
+    (define (greater b) (>  b a))
+      (list (filter less ls)
+            (filter greater ls)))
+
+
+(check-equal? (split-list '() 3) '(() ()) "test 1")
+(check-equal? (split-list '(1 2 3 4) 5) '((1 2 3 4) ()) "test 2")
+(check-equal? (split-list '(3 1 2 6 5 7 5) 5) '((3 1 2 5 5) (6 7)) "test 3")
+(check-equal? (split-list '(3 1 2 6 5 7 5) 0) '(() (3 1 2 6 5 7 5))
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle split-list.rkt :eval no :noweb yes
+<<split-list>>
+#+END_SRC

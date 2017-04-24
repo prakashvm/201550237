@@ -1,0 +1,47 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 2
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 2.
+
+* Problems
+  Assignment 2 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/higher-order-functions/index.html#org7c245e4
+
+* Solutions
+
+** Problem 6
+*** Question
+    Generate the function list-map using reduce. list-map takes a function and a list as arguments and applies the function to every element of the list. 
+	
+    
+*** Solution
+    
+#+NAME: list-map
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+(define (list-map f list)
+  (define (reduce list result)
+    (if (null? list)
+        (reverse result)
+        (reduce (cdr list) (cons (f (car list)) result))))
+  (reduce list '()))
+
+(check-equal? (list-map add1 '(1 2 3 4)) '(2 3 4 5) "test 1")
+(check-equal? (list-map boolean? '(1 #t #f 4)) '(#f #t #t #f) "test 2")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle list-map.rkt :eval no :noweb yes
+<<list-map>>
+#+END_SRC

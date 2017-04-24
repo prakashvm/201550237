@@ -1,0 +1,47 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 1
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-06 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution to Assignment 1.
+
+* Problems
+  Assignment 1 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/first-order-functions/index.html#orgf83783f
+
+* Solutions
+
+** Problem 5
+*** Question
+    Write a function named map-sqr which takes a list of numbers and returns a list whose elements are squares of the corresponding elements of argument list.
+
+*** Solution
+    
+#+NAME: map_sqr
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define map-sqr
+  (lambda (ls)
+    (map (lambda (x) (* x x))
+         ls)))
+
+
+(check-equal? (map-sqr '(1 2 3 4)) '(1 4 9 16) "test-1")
+(check-equal? (map-sqr '(1 2/3 3.0 3+4i)) '(1 4/9 9.0 -7+24i) "test 2")
+(check-equal? (map-sqr '()) '() "test 3")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle map-sqr.rkt :eval no :noweb yes
+<<map_sqr>>
+#+END_SRC

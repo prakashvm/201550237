@@ -1,0 +1,45 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 2
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 2.
+
+* Problems
+  Assignment 2 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/higher-order-functions/index.html#org60ad362
+
+* Solutions
+
+** Problem 4
+*** Question
+    Write a function compose, which takes two functions as arguments and returns their composition. 
+	
+    
+*** Solution
+    
+#+NAME: compose
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (add1 x) (+ x 1));
+
+(define next-even? (compose even? add1))
+
+(check-equal? (next-even? 4) #f "compose-t1")
+(check-equal? (next-even? 5) #t "compose-t2")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle compose.rkt :eval no :noweb yes
+<<compose>>
+#+END_SRC

@@ -1,0 +1,53 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 3
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 3.
+
+* Problems
+  Assignment 3 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/more-with-lists/index.html#org02af584
+
+* Solutions
+
+** Problem 4
+*** Question
+    Our task is to write a reduce* fucntion which takes a binary function op, an initial value init and a nested list l as input and reduces the list to an answer. . 
+	
+    
+*** Solution
+    
+#+NAME: reduce*
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (reduce* op init li)
+  (if (null? li)
+      init
+      (if (list? (car li))
+          (op (reduce* op init (car li)) (reduce* op init (cdr li)))
+          (op (car li) (reduce* op init (cdr li))))))
+
+(define (binary-and x y)
+    (and x y))
+
+(check-equal? (reduce* binary-and #t '((#t #t) (#t #t) #f)) #f "test 1")
+(check-equal? (reduce* binary-and #t '(#t (#t #t))) #t "test 2")
+(check-equal? (reduce* + 0 '(1 (2 3) (4 5))) 15 "test 3")
+(check-equal? (reduce* * 1 '((3 5) (2))) 30 "test 4")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle reduce*.rkt :eval no :noweb yes
+<<reduce*>>
+#+END_SRC

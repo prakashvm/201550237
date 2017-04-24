@@ -1,0 +1,45 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 1
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-06 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution to Assignment 1.
+
+* Problems
+  Assignment 1 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/first-order-functions/index.html#orgf83783f
+
+* Solutions
+
+** Problem 2
+*** Question
+    Write a function called list-sum which takes a list ln of numbers and returns the sum of all the numbers in ln.
+
+*** Solution
+    
+#+NAME: list_sum
+#+BEGIN_SRC racket
+
+#lang racket
+(define list-sum
+  (lambda (ln)
+    (if (empty? ln)
+        0
+        (+ (car ln) (list-sum (cdr ln))))))
+
+(check-equal? (list-sum '()) 0 "test 1")
+(check-equal? (list-sum '(1 2)) 3 "test 2")
+(check-equal? (list-sum '(1 2 8 4)) 15 "test 3")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle list-sum.rkt :eval no :noweb yes
+<<list_sum>>
+#+END_SRC

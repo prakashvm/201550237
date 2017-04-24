@@ -1,0 +1,21 @@
+#lang racket
+
+(define reduce
+  (lambda (f init ls)
+    (if (empty? ls)
+        init
+        (reduce f (f init (first ls)) (rest ls)))))
+
+(check-equal?  (all-satisfy even? '(2 3 4)) #f "All-even-test #f")
+(check-equal?  (all-satisfy even? '(2 4 6)) #t "All-even-test #t")
+(check-equal?  (all-satisfy boolean? '(#t #f 6)) #f "All-boolean-test #f")
+(check-equal?  (all-satisfy boolean? '(#t #f #t)) #t "All-boolean-test #t")
+
+
+(reduce + 0 '(1 2 3 4 5 6))
+(reduce + 1 '(2 3 4 5 6))
+(reduce + 3 '(3 4 5 6))
+(reduce + 6 '(4 5 6))
+(reduce + 10 '(5 6))
+(reduce + 15 '(6))
+(reduce + 21 '())

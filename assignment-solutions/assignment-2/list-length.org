@@ -1,0 +1,46 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 2
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 2.
+
+* Problems
+  Assignment 2 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/higher-order-functions/index.html#orgf2f02e1
+
+* Solutions
+
+** Problem 3
+*** Question
+    Find the length of a given list using the reduce function defined earlier.  
+	
+    
+*** Solution
+    
+#+NAME: list-length
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (list-length lst)
+  (if (empty? lst)
+      0
+      (+ 1 (list-length (rest lst)))))
+
+(check-equal? (list-length '(a b c)) 3 "List Length (a b c)")
+(check-equal? (list-length '(1 2 3 4)) 4 "List Length (1 2 3 4)")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle list-length.rkt :eval no :noweb yes
+<<list-length>>
+#+END_SRC

@@ -1,0 +1,50 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 1
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-06 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution to Assignment 1.
+
+* Problems
+  Assignment 1 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/first-order-functions/index.html#orgf83783f
+
+* Solutions
+
+** Problem 4
+*** Question
+    Write a function named member? which takes a list and a value and returns true if the value is equal to any element of the list, false otherwise.
+
+*** Solution
+    
+#+NAME: member
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define member
+ (lambda(lis item)
+  (cond((null? lis) #f)
+      (else(if(pair? (car lis))
+               (if(member item (car lis)) #t (member item (cdr lis)))
+               (if(equal? item (car lis)) #t (equal? item (cdr lis))))))))
+
+
+(check-equal? (member? '() 'a) #f "test 1")
+(check-equal? (member? '(a b c) 'a) #t "test 2")
+(check-equal? (member? '("a" "b" "c") 'a) #f "test 3")
+(check-equal? (member? '(1 2 3 (5 6)) '(5 6)) #t "test 4")
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle member.rkt :eval no :noweb yes
+<<member>>
+#+END_SRC

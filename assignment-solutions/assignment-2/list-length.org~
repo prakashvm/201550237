@@ -1,0 +1,50 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 2
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 2.
+
+* Problems
+  Assignment 2 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/higher-order-functions/index.html#org60ad362
+
+* Solutions
+
+** Problem 4
+*** Question
+    Write a function compose, which takes two functions as arguments and returns their composition. 
+	
+    
+*** Solution
+    
+#+NAME: compose
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define (split-list ls a)
+  (define (less b)      (<= b a))
+    (define (greater b) (>  b a))
+      (list (filter less ls)
+            (filter greater ls)))
+
+
+(check-equal? (split-list '() 3) '(() ()) "test 1")
+(check-equal? (split-list '(1 2 3 4) 5) '((1 2 3 4) ()) "test 2")
+(check-equal? (split-list '(3 1 2 6 5 7 5) 5) '((3 1 2 5 5) (6 7)) "test 3")
+(check-equal? (split-list '(3 1 2 6 5 7 5) 0) '(() (3 1 2 6 5 7 5)))
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle compose.rkt :eval no :noweb yes
+<<compose>>
+#+END_SRC

@@ -1,0 +1,22 @@
+#+TITLE: REST Interface for Mini Version of User Directory Application
+#+AUTHOR: VLEAD
+#+DATE: [2016-06-07 Tue]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+The CODE package hold five modules
+
+ - [[./vector-sum.org][=vector-sum=]]
+ - [[./list-sum.org][=list-sum=]]
+ - [[./list-length.org][=list-length=]]
+ - [[./member.org][=member=]]
+ - [[./map-sqr.org][=map-sqr=]]
+
+
+
+* Tangle                          :boilerplate:
+#+BEGIN_SRC python :eval no :tangle __init__.py
+print "rest package"
+#+END_SRC
