@@ -16,7 +16,7 @@
 
 ** Problem 4
 *** Question
-    Write a function compose, which takes two functions as arguments and returns their composition. 
+    Recall the function compose done in class. compose takes two functions as arguments and returns their composition. Implement compose again here. 
 	
     
 *** Solution
@@ -27,12 +27,19 @@
 #lang racket
 (require rackunit)
 
+
 (define (add1 x) (+ x 1));
 
 (define next-even? (compose even? add1))
 
 (check-equal? (next-even? 4) #f "compose-t1")
-(check-equal? (next-even? 5) #t "compose-t2")
+(check-equal? (next-even? 5) #t "compose-t2")	
+
+
+(define (compose even? add1)
+  (lambda (x)
+    (even? (add1 x))))
+
 
 #+END_SRC
 

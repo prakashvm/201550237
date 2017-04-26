@@ -8,12 +8,12 @@
 
 The CODE package hold five modules
 
- - [[./reduce.org][=vector-sum=]]
- - [[./reverse.org][=list-sum=]]
+ - [[./reduce.org][=reduce=]]
+ - [[./reverse.org][=reverse=]]
  - [[./list-length.org][=list-length=]]
- - [[./compose.org][=member=]]
- - [[./compose*.org][=member=]]
- - [[./list-map.org][=member=]]
+ - [[./compose.org][=compose=]]
+ - [[./compose*.org][=compose*=]]
+ - [[./list-map.org][=list-map=]]
  
 
 

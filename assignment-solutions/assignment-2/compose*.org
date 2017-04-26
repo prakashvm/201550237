@@ -1,0 +1,63 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 2
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-21 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 2.
+
+* Problems
+  Assignment 2 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/higher-order-functions/index.html#org27840b4
+
+* Solutions
+
+** Problem 5
+*** Question
+    Use compose and reduce above to create compose*, which takes in a list of functions as argument (see example) and returns the composition of all functions. 
+	
+    
+*** Solution
+    
+#+NAME: compose*
+#+BEGIN_SRC racket
+
+#lang racket
+(require rackunit)
+
+(define mul2
+  (lambda (x) (* x 2)))
+
+(define add1
+  (lambda (y) (+ y 1)))
+
+(define sub1
+  (lambda (z) (- z 1)))
+
+(define (compose . funcs)
+  (let compose2
+    ((func-list (cdr funcs))
+     (func (lambda args (apply (car funcs) args))))
+    (if (null? func-list)
+    func
+    (compose2
+     (cdr func-list)
+     (lambda args (func (apply (car func-list) args)))))))
+
+(define f (compose add1 mul2 sub1))
+
+(check-equal? (f 4) 7 "f 4")
+(check-equal? (f 7) 13 "f 7")
+
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle compose*.rkt :eval no :noweb yes
+<<compose*>>
+#+END_SRC

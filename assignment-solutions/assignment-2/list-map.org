@@ -26,6 +26,7 @@
 
 #lang racket
 (require rackunit)
+
 (define (list-map f list)
   (define (reduce list result)
     (if (null? list)

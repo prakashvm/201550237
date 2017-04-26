@@ -1,5 +1,0 @@
-#lang racket
-
-(define (reverse l)
-  (if (null? l) l
-  (cons(car l)(word (cdr l)))))

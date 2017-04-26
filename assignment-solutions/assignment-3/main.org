@@ -8,10 +8,10 @@
 
 The CODE package hold five modules
 
- - [[./split-list.org][=vector-sum=]]
- - [[./flatten-list.org][=list-sum=]]
- - [[./map*.org][=list-length=]]
- - [[./reduce*.org][=member=]]
+ - [[./split-list.org][=split-list=]]
+ - [[./flatten-list.org][=flatten-list=]]
+ - [[./map*.org][=map*=]]
+ - [[./reduce*.org][=reduce*=]]
  
 
 
