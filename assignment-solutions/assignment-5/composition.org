@@ -1,0 +1,62 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 5
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-26 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 5.
+
+* Problems
+  Assignment 5 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/javascript-fp/index.html#org1d20c4b
+
+* Solutions
+
+** Problem 1
+*** Question
+    Write a function composition which returns the composition of two input functions. 
+	
+    
+*** Solution
+    
+#+NAME: composition
+#+BEGIN_SRC js
+
+
+<!DOCTYPE html>
+<html>
+<body>
+<p> A function composition which returns the composition of two input functions.</p>
+<p id="demo"></p>
+<script language="javascript">
+
+function add1(x) {
+  return x + 1;
+}
+function mul2(x) {
+  return x * 2;
+}
+function compose(f1, f2) {
+  return function(value) {
+    return f1(f2(value));
+  };
+}
+var add1mul2 = compose(mul2, add1)(2);
+document.write("<br>" + add1mul2)
+var mul2add1 = compose(add1, mul2)(2);
+document.write("<br>" + mul2add1)
+
+</script>
+</body>
+</html>
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC js :tangle composition.js :eval no :noweb yes
+<<composition>>
+#+END_SRC

@@ -1,0 +1,74 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 5
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-26 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 5.
+
+* Problems
+  Assignment 5 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/javascript-fp/index.html#org8fe3a9e
+
+* Solutions
+
+** Problem 2
+*** Question
+    Write a function nthPowerFunc which takes a function func and a number n and returns the nth power of that function. 
+    Example: This function should return a function which will apply the input function func, n times consecutively to the given input. If func is add1 and n is 5, then the returned function will be a    	function which will add 5 to it's given input value. 
+	
+    
+*** Solution
+    
+#+NAME: nthPowerFunc
+#+BEGIN_SRC js
+
+
+<!DOCTYPE html>
+<html>
+<body>
+<p> A function nthPowerFunc which takes a function func and a number n and returns the nth power of that function.</p>
+<p id="demo"></p>
+<script language="javascript">
+function add1(x)
+{
+  return x + 1;
+}
+
+function mul2(x)
+{
+  return x * 2;
+}
+
+function nthPowerFunc(f1, n)
+{
+ return function(value)
+    {
+     for (var i = 0; i < n; i++)
+  {
+         value = (f1(value));
+     }
+ 
+ document.write("<br>" + value)
+ }
+}
+var res = nthPowerFunc(add1, 5) (0);
+var res = nthPowerFunc(add1, 11) (10);
+var res = nthPowerFunc(mul2, 5) (10);
+var res = (nthPowerFunc(mul2, 10) (1));
+
+</script>
+</body>
+</html>
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC js :tangle nthPowerFunc.js :eval no :noweb yes
+<<nthPowerFunc>>
+#+END_SRC
