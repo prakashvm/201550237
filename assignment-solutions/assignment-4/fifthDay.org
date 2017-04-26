@@ -1,0 +1,65 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 4
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-26 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 4.
+
+* Problems
+  Assignment 4 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/javascript-basic/index.html#org149438b
+
+* Solutions
+
+** Problem 1
+*** Question
+    Write a function fifthDay which does not take any arguments but returns the fifth day by considering today's date. Search for inbuilt functions for getting today's date and try using JSON object to    	 store any kind of mapping. 
+	
+    
+*** Solution
+    
+#+NAME: fifthDay
+#+BEGIN_SRC js
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>A function in Javascript to display fifth day by considering today's date.</p>
+<p id="demo"></p>
+<script language="javascript">
+function fifthDay()
+{
+var d=new Date()
+    var weekday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday",
+                "Friday","Saturday")
+    var n = (d.getDay() + 5);
+   
+    if (n > 7)
+    {
+        var m = n - 7; 
+        document.write("Fifth day from today is " + weekday[m])
+ } 
+   
+    if (n <= 7)
+    {
+        document.write("Fifth day from today is " + weekday[n])
+ }
+       
+}
+result = fifthDay();
+</script>
+</body>
+</html>
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle fifthDay.js :eval no :noweb yes
+<<fifthDay>>
+#+END_SRC

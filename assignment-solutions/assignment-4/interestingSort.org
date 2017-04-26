@@ -1,0 +1,87 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 4
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-26 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 4.
+
+* Problems
+  Assignment 4 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/javascript-basic/index.html#org98a20fc
+
+* Solutions
+
+** Problem 3
+*** Question
+    Write a function called interestingSort which takes a string and returns a string which is sorted in the following way -
+
+    First part of the final string is the part obtained by sorting characters in between 'a' and 'm' (both inclusive) lexicographically.
+    Second part of the final string contains the other characters in the same order as in the input string.
+
+    Input string will only contain lower case characters. You can use in-built functions like sort, filter, join, etc.  
+	
+    
+*** Solution
+    
+#+NAME: interestingSort
+#+BEGIN_SRC js
+
+<!DOCTYPE html>
+<html>
+<body>
+<p> Given an array containing numbers, a function that computes the average of the numbers in the array.</p>
+<p id="demo"></p>
+<script language="javascript">
+
+//var str1 = ' ';
+//var str2 = ' ';
+function interestingSort(str)
+{
+ var str1 = ' ';
+ var str2 = ' ';
+    var result = str.split('');
+    var m =  result.length;
+ for (var x = 0; x < m; x++)
+ {
+     var c=result[x];
+  if ((result[x] == "a" || result[x] == "b" || result[x] == "c" || result[x] ==     "d" || result[x] == "e" || result[x] == "f" || result[x] == "g" || result    [x] == "h" || result[x] == "i" || result[x] == "j" || result[x] == "k"      || result[x] == "l" || result[x] == "m" ))
+      {
+      str1 += result[x];
+               
+   }
+   else
+    str2 += result[x];
+               
+ }
+ var str3 = str1.split('');
+ var str4 = str3.sort();
+ var str5 = str2.split('');
+ var str6 = str4.join("");
+ var str7 = str5.join("");
+ var str8 = (str7.trim());
+ var str9 = str6 + str8;
+ document.writeln("<br>" + str9)
+    str9 = undefined;
+   
+}
+
+ var string=(interestingSort("interesting"));
+ var string=(interestingSort("bazyx"));
+ var string=(interestingSort("abcdefghijklmnopqrstuvwxyz"));
+
+</script>
+</body>
+</html>
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle interestingSort.js :eval no :noweb yes
+<<interestingSort>>
+#+END_SRC

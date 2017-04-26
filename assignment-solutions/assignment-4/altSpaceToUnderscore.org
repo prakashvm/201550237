@@ -1,0 +1,77 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 4
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-26 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 4.
+
+* Problems
+  Assignment 4 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/javascript-basic/index.html#org9d4406f
+
+* Solutions
+
+** Problem 2
+*** Question
+    Write a function called altSpaceToUnderscore which takes a string and replaces every even space in the string with an underscore. The function should discard any leading or trailing spaces and not    	consider them for replacement. You can use in-built functions like trim, split, splice, substr, etc for operations on string. 
+	
+    
+*** Solution
+    
+#+NAME: altSpaceToUnderscore
+#+BEGIN_SRC js
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>A function in Javascript which takes a string and replaces every even space in the string with an underscore .</p>
+<p id="demo"></p>
+<script language="javascript">
+
+function altSpacetoUnderscore(str)
+{ 
+ var string = (str.trim());
+ var strsec= "";
+ var m = 0;
+ for (var i=0; i < string.length; i++)
+    {
+  if (string.charAt(i) == ' ')
+  {
+     m = m + 1;
+     if (m % 2 === 0)
+            {
+       string = string.substr(0, i) + '_' + string.substr(i + 1);
+       continue;
+      }
+   if (m % 2 != 0)
+         {
+    continue;
+   }
+     }
+    } 
+ document.write("<br>" + string)
+ return string;
+}
+var result;
+result = altSpacetoUnderscore("Hello there, how are you !!");
+result = altSpacetoUnderscore("Hello World");
+result = altSpacetoUnderscore(" a b c d e f g ");
+result = altSpacetoUnderscore("Hello a b cd");
+document.write("<br>" + result)
+
+</script>
+</body>
+</html>
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle altSpaceToUnderscore.js :eval no :noweb yes
+<<altSpaceToUnderscore>>
+#+END_SRC

@@ -1,0 +1,72 @@
+#+TITLE: ITWS2 2017 SPRINT IIITH Assignment 4
+#+AUTHOR: PRAKASH MUDHOLKAR
+#+DATE: [2017-04-26 Thu]
+#+SETUPFILE: ../../org-templates/level-2.org
+#+TAGS: boilerplate(b)
+#+EXCLUDE_TAGS: boilerplate
+#+OPTIONS: ^:nil
+
+* Introduction
+  This contains solution of Assignment 4.
+
+* Problems
+  Assignment 4 Problem Set is taken from http://pascal.iiit.ac.in/~itws2/docs/assignments/javascript-basic/index.html#org07c3da3
+
+* Solutions
+
+** Problem 2
+*** Question
+    Write a function named getMeNextFirst which takes a string containing white spaces and transforms the string such that every word gets appended with the first character of the next word in the string. 	 Remove the leading trailing white spaces so that they are not considered in your algorithm. You should use functions like filter, join, slice, etc to write an elegant solution.  
+	
+    
+*** Solution
+    
+#+NAME: getMeNextFirst
+#+BEGIN_SRC js
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>A function named getMeNextFirst which takes a string containing white spaces and transforms the string such that every word gets appended with the first character of the next word in the string.</p>
+<p id="demo"></p>
+<script language="javascript">
+
+function getMeNextFirst(string)
+{
+ var string = (string.trim());
+ var strsec= "";
+ var m = 0;
+
+ document.write("<br>")
+ for (var i=0; i < string.length; i++)
+    {
+  if (string.charAt(i) == ' ')
+        {
+         m = i + 1;
+   var res = string.replace(" ", string[m]);
+   string = res.substr(0, m) + ' ' + res.substr(m + 1);
+   document.write("<br>" + string)
+   return string;
+   exit;
+  }
+ } 
+}
+var result;
+result = getMeNextFirst("Hello there, how are you !!");
+result = getMeNextFirst("Hello World");
+result = getMeNextFirst(" a b c d e f g ");
+result = getMeNextFirst("Hello a b cd");
+
+</script>
+</body>
+</html>
+
+#+END_SRC
+
+
+* Tangle
+
+** Sources
+#+BEGIN_SRC racket :tangle getMeNextFirst.js :eval no :noweb yes
+<<getMeNextFirst>>
+#+END_SRC
